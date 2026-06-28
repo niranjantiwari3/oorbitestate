@@ -1,1132 +1,1361 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbit Estate | Your Trusted Real Estate Partner | Pan-India & Middle East</title>
-    <meta name="description" content="Premium real estate consultancy services across India and Middle East. Buy, sell, or invest in properties with expert guidance.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold: #C9A962;
-            --gold-light: #E8D5A3;
-            --dark: #0A0A0A;
-            --dark-light: #1A1A1A;
-            --gray: #888;
-            --white: #FAFAFA;
-            --gradient: linear-gradient(135deg, #C9A962 0%, #A67C3D 100%);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--dark);
-            color: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 20px 0;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(201, 169, 98, 0.1);
-        }
-        
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--white);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .logo span {
-            color: var(--gold);
-        }
-        
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: var(--gray);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-        
-        .nav-cta {
-            background: var(--gradient);
-            color: var(--dark);
-            padding: 12px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: 120px 0 80px;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 60%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200') center/cover;
-            opacity: 0.3;
-            mask-image: linear-gradient(to left, black, transparent);
-            -webkit-mask-image: linear-gradient(to left, black, transparent);
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 20%;
-            right: 10%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(201, 169, 98, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: pulse 4s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            max-width: 650px;
-        }
-        
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(201, 169, 98, 0.1);
-            border: 1px solid rgba(201, 169, 98, 0.3);
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 13px;
-            color: var(--gold);
-            margin-bottom: 30px;
-            animation: fadeInUp 0.8s ease;
-        }
-        
-        .hero-tag::before {
-            content: '●';
-            font-size: 8px;
-            animation: blink 1.5s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-        
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(48px, 6vw, 72px);
-            font-weight: 500;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            animation: fadeInUp 0.8s ease 0.1s both;
-        }
-        
-        .hero h1 span {
-            color: var(--gold);
-            font-style: italic;
-        }
-        
-        .hero p {
-            font-size: 18px;
-            color: var(--gray);
-            margin-bottom: 40px;
-            max-width: 500px;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.3s both;
-        }
-        
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--gradient);
-            color: var(--dark);
-            padding: 16px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(201, 169, 98, 0.4);
-        }
-        
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: transparent;
-            color: var(--white);
-            padding: 16px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s;
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-        }
-        
-        /* Stats */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 8px;
-        }
-        
-        .stat-label {
-            font-size: 13px;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* Services */
-        .services {
-            padding: 120px 0;
-            background: var(--dark-light);
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-tag {
-            font-size: 12px;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 16px;
-        }
-        
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(36px, 4vw, 48px);
-            font-weight: 500;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .service-card {
-            background: var(--dark);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 40px;
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient);
-            transform: scaleX(0);
-            transition: transform 0.4s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(201, 169, 98, 0.3);
-        }
-        
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(201, 169, 98, 0.1);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 24px;
-        }
-        
-        .service-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-        
-        .service-card p {
-            color: var(--gray);
-            font-size: 15px;
-            line-height: 1.7;
-        }
-        
-        /* Locations */
-        .locations {
-            padding: 120px 0;
-        }
-        
-        .locations-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-        
-        .location-card {
-            position: relative;
-            height: 300px;
-            border-radius: 20px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-        
-        .location-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .location-card:hover img {
-            transform: scale(1.1);
-        }
-        
-        .location-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 70%;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-        }
-        
-        .location-info {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            z-index: 10;
-        }
-        
-        .location-info h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 22px;
-            margin-bottom: 4px;
-        }
-        
-        .location-info span {
-            font-size: 13px;
-            color: var(--gold);
-        }
-        
-        /* NRI Section */
-        .nri {
-            padding: 120px 0;
-            background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .nri::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(201, 169, 98, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        
-        .nri-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-        
-        .nri-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(36px, 4vw, 48px);
-            margin-bottom: 24px;
-        }
-        
-        .nri-text h2 span {
-            color: var(--gold);
-        }
-        
-        .nri-text p {
-            color: var(--gray);
-            font-size: 16px;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-        
-        .nri-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .nri-feature {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        
-        .nri-feature-icon {
-            width: 24px;
-            height: 24px;
-            background: var(--gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            color: var(--dark);
-            flex-shrink: 0;
-        }
-        
-        .nri-feature span {
-            font-size: 14px;
-            color: var(--white);
-        }
-        
-        .nri-image {
-            position: relative;
-        }
-        
-        .nri-image img {
-            width: 100%;
-            border-radius: 20px;
-        }
-        
-        .nri-badge {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            background: var(--gradient);
-            color: var(--dark);
-            padding: 20px 30px;
-            border-radius: 15px;
-            text-align: center;
-        }
-        
-        .nri-badge-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 600;
-        }
-        
-        .nri-badge-text {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        /* Contact Form */
-        .contact {
-            padding: 120px 0;
-            background: var(--dark);
-        }
-        
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            background: var(--dark-light);
-            border-radius: 30px;
-            padding: 60px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .contact-info h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-        
-        .contact-info p {
-            color: var(--gray);
-            margin-bottom: 40px;
-        }
-        
-        .contact-methods {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .contact-method {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        
-        .contact-method-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(201, 169, 98, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-        
-        .contact-method-text span {
-            display: block;
-            font-size: 13px;
-            color: var(--gray);
-        }
-        
-        .contact-method-text strong {
-            font-size: 16px;
-            color: var(--white);
-        }
-        
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .form-group label {
-            font-size: 13px;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            background: var(--dark);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 16px 20px;
-            color: var(--white);
-            font-family: 'DM Sans', sans-serif;
-            font-size: 15px;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-        
-        .form-group textarea {
-            resize: none;
-            height: 120px;
-        }
-        
-        .form-submit {
-            background: var(--gradient);
-            color: var(--dark);
-            border: none;
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .form-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(201, 169, 98, 0.4);
-        }
-        
-        /* Footer */
-        footer {
-            padding: 60px 0 30px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-        
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-        }
-        
-        .footer-logo span {
-            color: var(--gold);
-        }
-        
-        .footer-links {
-            display: flex;
-            gap: 40px;
-        }
-        
-        .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--gray);
-            font-size: 13px;
-        }
-        
-        /* WhatsApp Floating Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 999;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: #25D366;
-            color: white;
-            padding: 16px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s;
-            animation: bounce 2s infinite;
-        }
-        
-        .whatsapp-float:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 50px rgba(37, 211, 102, 0.5);
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        .whatsapp-float svg {
-            width: 24px;
-            height: 24px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .locations-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .nri-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .services-grid,
-            .locations-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-wrapper {
-                grid-template-columns: 1fr;
-                padding: 30px;
-            }
-            
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OOrbit Estate — Navi Mumbai's Trusted Property Advisory</title>
+<meta name="description" content="OOrbit Estate is Navi Mumbai's buyer-side property advisory. RERA-verified builders, honest price opinions, complete cost transparency, and guidance from first question to possession.">
+<meta property="og:title" content="OOrbit Estate — Your Property Advisor, Not Just an Agent">
+<meta property="og:description" content="Navi Mumbai's first buyer-side property advisory. Correct advice. Confident decisions.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oorbitestate.com">
+<meta name="theme-color" content="#1C1C1C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  background:#FCFBF8;color:#1C1C1C;
+  font-family:'Inter',sans-serif;font-weight:300;
+  line-height:1.7;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+:root{
+  --ivory:#FCFBF8;
+  --cream:#F4F1EA;
+  --charcoal:#1C1C1C;
+  --gold:#B8973A;
+  --gold-deep:#A88428;
+  --green:#24342B;
+  --green-light:#2D4035;
+}
+
+/* PAGE LOADER */
+#loader{
+  position:fixed;inset:0;z-index:9999;
+  background:#1C1C1C;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:1.5rem;
+  transition:opacity 0.8s ease,visibility 0.8s ease;
+}
+#loader.done{opacity:0;visibility:hidden}
+.loader-logo{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:300;
+  color:#FCFBF8;letter-spacing:0.1em;
+  opacity:0;animation:loaderFade 1s ease 0.2s forwards;
+}
+.loader-logo em{font-style:italic;color:#B8973A}
+.loader-bar{
+  width:120px;height:1px;background:rgba(255,255,255,0.15);
+  position:relative;overflow:hidden;
+}
+.loader-bar::after{
+  content:'';position:absolute;inset:0;
+  background:#B8973A;transform:translateX(-100%);
+  animation:loaderBar 1.4s ease forwards;
+}
+@keyframes loaderFade{to{opacity:1}}
+@keyframes loaderBar{to{transform:translateX(0)}}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:rgba(252,251,248,0.9);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(28,28,28,0.07);
+  height:74px;display:flex;align-items:center;
+  padding:0 5%;justify-content:space-between;
+  transition:transform 0.4s ease;
+}
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;font-weight:400;
+  color:#1C1C1C;text-decoration:none;letter-spacing:0.05em;
+}
+.logo em{font-style:italic;color:#B8973A}
+.nav-center{
+  display:flex;gap:2.5rem;list-style:none;
+  position:absolute;left:50%;transform:translateX(-50%);
+}
+.nav-center a{
+  font-size:0.76rem;font-weight:400;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:#6A6A6A;text-decoration:none;transition:color 0.2s;
+  position:relative;
+}
+.nav-center a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:1px;background:#B8973A;transition:width 0.3s ease;
+}
+.nav-center a:hover{color:#1C1C1C}
+.nav-center a:hover::after{width:100%}
+.nav-cta{
+  font-size:0.7rem;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;
+  background:#1C1C1C;color:#FCFBF8;text-decoration:none;
+  padding:11px 26px;transition:background 0.25s;
+}
+.nav-cta:hover{background:#B8973A}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+.nav-toggle span{width:24px;height:1.5px;background:#1C1C1C;display:block;transition:0.3s}
+@media(max-width:900px){
+  .nav-center{
+    position:fixed;top:74px;left:0;right:0;
+    flex-direction:column;gap:0;
+    background:#FCFBF8;
+    border-bottom:1px solid rgba(28,28,28,0.08);
+    padding:0;max-height:0;overflow:hidden;
+    transition:max-height 0.4s ease;transform:none;
+  }
+  .nav-center.open{max-height:400px}
+  .nav-center li{width:100%;text-align:center;border-bottom:1px solid rgba(28,28,28,0.05)}
+  .nav-center a{display:block;padding:1.1rem}
+  .nav-toggle{display:flex}
+  .nav-cta{display:none}
+}
+
+/* HERO */
+.hero{
+  height:100vh;min-height:620px;position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;padding:0 5% 9vh;
+}
+.hero-img{
+  position:absolute;inset:0;
+  background-image:url('images/atal-setu.jpg');
+  background-size:cover;background-position:center;
+  animation:heroZoom 20s ease-out forwards;
+}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.12)}}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(20,24,22,0.92) 0%,rgba(20,24,22,0.45) 45%,rgba(20,24,22,0.1) 100%);
+}
+.hero-content{position:relative;z-index:2;max-width:760px}
+.hero-label{
+  font-size:0.68rem;font-weight:500;letter-spacing:0.22em;
+  text-transform:uppercase;color:#D4B85A;margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:12px;
+  opacity:0;animation:fadeUp 0.8s ease 0.3s forwards;
+}
+.hero-label::before{content:'';display:block;width:32px;height:1px;background:#D4B85A}
+.hero-name{
+  font-family:'Playfair Display',serif;font-size:1.1rem;
+  font-style:italic;font-weight:300;color:rgba(255,255,255,0.7);
+  margin-bottom:0.5rem;min-height:1.6rem;
+}
+.hero-h{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,5.5vw,4.6rem);
+  font-weight:300;line-height:1.08;color:#FFF;
+  letter-spacing:-0.01em;
+  min-height:clamp(6.5rem,15vw,13rem);
+  display:flex;align-items:flex-start;
+  opacity:0;animation:fadeUp 0.8s ease 0.5s forwards;
+}
+#rotator-text{opacity:0;transform:translateY(12px);transition:opacity 0.6s ease,transform 0.6s ease;display:inline-block;font-weight:300}
+#rotator-text.show{opacity:1;transform:translateY(0)}
+#rotator-text em{font-style:italic;color:#D4B85A}
+.hero-sub{
+  font-size:clamp(0.9rem,1.5vw,1.08rem);color:rgba(255,255,255,0.62);
+  max-width:500px;line-height:1.85;margin-bottom:2.25rem;font-weight:300;
+  opacity:0;animation:fadeUp 0.8s ease 0.7s forwards;
+}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s ease 0.9s forwards}
+.btn-white{
+  background:#FFF;color:#1C1C1C;font-size:0.75rem;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;padding:15px 38px;
+  text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;display:inline-block;
+}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,0.25)}
+.btn-ghost-white{
+  border:1px solid rgba(255,255,255,0.4);color:#FFF;font-size:0.75rem;
+  font-weight:400;letter-spacing:0.1em;text-transform:uppercase;padding:15px 38px;
+  text-decoration:none;transition:border-color 0.2s,background 0.2s;display:inline-block;
+}
+.btn-ghost-white:hover{border-color:#FFF;background:rgba(255,255,255,0.08)}
+.hero-trust{
+  display:flex;gap:2.5rem;margin-top:3rem;flex-wrap:wrap;
+  opacity:0;animation:fadeUp 0.8s ease 1.1s forwards;
+  border-top:1px solid rgba(255,255,255,0.15);padding-top:1.75rem;
+}
+.hero-trust-item{display:flex;flex-direction:column}
+.hero-trust-num{font-family:'Playfair Display',serif;font-size:1.5rem;color:#D4B85A;line-height:1}
+.hero-trust-label{font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:4px;letter-spacing:0.04em}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){.hero{padding-bottom:5vh}.hero-trust{gap:1.5rem}}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:0.1s}
+.reveal-d2{transition-delay:0.2s}
+.reveal-d3{transition-delay:0.3s}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  .hero-img{animation:none}
+  *{animation-duration:0.01ms!important}
+}
+
+/* SECTION BASICS */
+section{padding:7.5rem 5%;position:relative}
+.sec-eye{
+  font-size:0.68rem;font-weight:500;letter-spacing:0.22em;
+  text-transform:uppercase;color:#B8973A;margin-bottom:0.85rem;
+  display:flex;align-items:center;gap:10px;
+}
+.sec-eye.center{justify-content:center}
+.sec-eye::before{content:'';display:block;width:26px;height:1px;background:#B8973A}
+.sec-eye.center::after{content:'';display:block;width:26px;height:1px;background:#B8973A}
+.sec-h{
+  font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.4vw,2.9rem);
+  font-weight:300;line-height:1.14;margin-bottom:0.75rem;letter-spacing:-0.01em;
+}
+.sec-h em{font-style:italic;color:#B8973A}
+.rule{width:38px;height:1px;background:#B8973A;margin:1.2rem 0 2.4rem;display:block}
+
+/* INTRO (blue) */
+.intro{padding:8.5rem 5%;background:linear-gradient(135deg,#EAF2F8 0%,#DCEAF4 100%);border-bottom:1px solid rgba(28,28,28,0.05);position:relative;overflow:hidden}
+.intro::before{content:'';position:absolute;top:-30%;right:-10%;width:520px;height:520px;background:radial-gradient(circle,rgba(184,151,58,0.07) 0%,transparent 70%);pointer-events:none}
+.intro-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:6rem;align-items:start;max-width:1120px;margin:0 auto;position:relative;z-index:2}
+.intro-eyebrow{font-size:0.65rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#B8973A;margin-bottom:1.5rem}
+.intro-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.4vw,2.9rem);font-weight:300;line-height:1.2;color:#1C1C1C;min-height:clamp(7rem,13vw,10.5rem)}
+.intro-h em{font-style:italic;color:#B8973A}
+#intro-rotator{opacity:0;transform:translateY(12px);transition:opacity 0.6s ease,transform 0.6s ease;display:inline-block}
+#intro-rotator.show{opacity:1;transform:translateY(0)}
+.intro-rule{width:32px;height:1px;background:#B8973A;margin:2rem 0;display:block}
+.intro-p{font-size:clamp(1rem,1.5vw,1.12rem);color:#3A3A3A;line-height:1.9;margin-bottom:1.5rem;font-weight:300}
+.intro-p strong{font-weight:500;color:#1C1C1C}
+.intro-verdict{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:#B8973A;margin-top:2rem;line-height:1.6}
+@media(max-width:768px){.intro-inner{grid-template-columns:1fr;gap:2.5rem}}
+
+/* TRUST BADGES STRIP */
+.trustbar{background:#1C1C1C;padding:3rem 5%}
+.trustbar-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr);gap:2rem;text-align:center}
+.tb-item{display:flex;flex-direction:column;gap:0.5rem;align-items:center}
+.tb-icon{font-size:1.4rem}
+.tb-label{font-size:0.72rem;color:rgba(255,255,255,0.55);letter-spacing:0.04em;line-height:1.4}
+@media(max-width:768px){.trustbar-inner{grid-template-columns:repeat(2,1fr);gap:1.75rem}}
+
+/* COUNTERS */
+.counters{background:#24342B;padding:6rem 5%;position:relative;overflow:hidden}
+.counters::before{content:'';position:absolute;top:-20%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(184,151,58,0.1) 0%,transparent 70%)}
+.counters-inner{max-width:1120px;margin:0 auto;position:relative;z-index:2}
+.counters-head{text-align:center;margin-bottom:3.5rem}
+.counters-head h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:300;color:#FCFBF8}
+.counters-head h2 em{font-style:italic;color:#D4B85A}
+.counters-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.counter{text-align:center;padding:1.5rem 1rem;border-right:1px solid rgba(255,255,255,0.08)}
+.counter:last-child{border-right:none}
+.counter-num{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4vw,3.4rem);font-weight:300;color:#D4B85A;line-height:1}
+.counter-label{font-size:0.78rem;color:rgba(255,255,255,0.55);margin-top:0.75rem;letter-spacing:0.06em;text-transform:uppercase}
+@media(max-width:768px){.counters-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem}.counter{border-right:none;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:1.5rem}}
+
+/* WHO (maroon) */
+.who{padding:8.5rem 5%;background:linear-gradient(135deg,#F5E8EA 0%,#EFDADE 100%);border-bottom:1px solid rgba(28,28,28,0.05);position:relative;overflow:hidden}
+.who::before{content:'';position:absolute;bottom:-25%;left:-8%;width:480px;height:480px;background:radial-gradient(circle,rgba(184,151,58,0.06) 0%,transparent 70%);pointer-events:none}
+.who-top{display:grid;grid-template-columns:1fr 2fr;gap:5rem;margin-bottom:4.5rem;max-width:1120px;margin-left:auto;margin-right:auto;position:relative;z-index:2}
+.who-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.6rem);font-weight:300;line-height:1.2;color:#1C1C1C}
+.who-h em{font-style:italic;color:#B8973A}
+.who-desc{font-size:0.96rem;color:#5A5A5A;line-height:1.85;font-weight:300;padding-top:0.5rem}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1120px;margin:0 auto;position:relative;z-index:2}
+.who-card{background:#FFF;padding:2.75rem 2.25rem;transition:transform 0.35s ease,box-shadow 0.35s ease;position:relative;overflow:hidden}
+.who-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:#B8973A;transition:width 0.4s ease}
+.who-card:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(28,28,28,0.12)}
+.who-card:hover::after{width:100%}
+.who-type{font-size:0.84rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#B8973A;margin-bottom:1rem}
+.who-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;color:#1C1C1C;margin-bottom:1.5rem;line-height:1.3}
+.who-list{list-style:none;display:flex;flex-direction:column;gap:0.75rem}
+.who-list li{font-size:0.86rem;color:#5A5A5A;padding-left:1.25rem;position:relative;line-height:1.6;font-weight:300}
+.who-list li::before{content:'—';position:absolute;left:0;color:#B8973A;font-size:0.72rem;top:3px}
+@media(max-width:768px){.who-top{grid-template-columns:1fr;gap:2rem}.who-grid{grid-template-columns:1fr}}
+
+/* FULLBLEED */
+.fullbleed{height:62vh;min-height:420px;position:relative;overflow:hidden}
+.fullbleed img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 8s ease}
+.fullbleed:hover img{transform:scale(1.06)}
+.fullbleed-caption{position:absolute;bottom:2rem;right:2.5rem;font-size:0.7rem;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.6)}
+.fullbleed-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.35),transparent 50%)}
+
+/* PROPERTIES — magazine style */
+.props{padding:8.5rem 5%;background:#FCFBF8}
+.props-head{max-width:1120px;margin:0 auto 3rem;text-align:center}
+.props-tabs{display:flex;gap:0;justify-content:center;margin-bottom:4rem;border-bottom:1px solid rgba(28,28,28,0.1);max-width:1120px;margin-left:auto;margin-right:auto}
+.props-tab{font-size:0.74rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:0.85rem 1.75rem;color:#9A9A9A;cursor:pointer;border-bottom:1.5px solid transparent;margin-bottom:-1px;background:none;border-top:none;border-left:none;border-right:none;font-family:'Inter',sans-serif;transition:color 0.2s,border-color 0.2s}
+.props-tab.active{color:#1C1C1C;border-bottom-color:#1C1C1C}
+.prop-panel{display:none;max-width:1120px;margin:0 auto}
+.prop-panel.active{display:block}
+.prop-row{display:grid;grid-template-columns:1.3fr 1fr;gap:0;margin-bottom:2.5rem;background:#FFF;overflow:hidden;box-shadow:0 4px 24px rgba(28,28,28,0.06);transition:box-shadow 0.4s ease}
+.prop-row:hover{box-shadow:0 16px 50px rgba(28,28,28,0.13)}
+.prop-row.flip{grid-template-columns:1fr 1.3fr}
+.prop-row.flip .prop-media{order:2}
+.prop-row.flip .prop-info{order:1}
+.prop-media{height:340px;overflow:hidden;position:relative}
+.prop-media img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease;display:block}
+.prop-row:hover .prop-media img{transform:scale(1.05)}
+.prop-tag{position:absolute;top:18px;left:18px;font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;background:#FCFBF8;color:#1C1C1C}
+.prop-tag.com{background:#24342B;color:#FCFBF8}
+.prop-info{padding:2.75rem;display:flex;flex-direction:column;justify-content:center}
+.prop-name{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:400;color:#1C1C1C;margin-bottom:0.35rem;line-height:1.15}
+.prop-loc{font-size:0.8rem;color:#9A9A9A;margin-bottom:1.5rem}
+.prop-why{font-size:0.9rem;color:#4A4A4A;line-height:1.7;font-weight:300;margin-bottom:1.5rem;font-style:italic;border-left:2px solid #B8973A;padding-left:1rem}
+.prop-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(28,28,28,0.08)}
+.prop-stat label{display:block;font-size:0.62rem;color:#9A9A9A;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:3px}
+.prop-stat span{font-size:0.95rem;font-weight:500;color:#1C1C1C}
+.prop-score{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem}
+.prop-score-bar{flex:1;height:5px;background:rgba(28,28,28,0.08);border-radius:3px;overflow:hidden}
+.prop-score-fill{height:100%;background:linear-gradient(90deg,#B8973A,#D4B85A);border-radius:3px;width:0;transition:width 1.2s ease}
+.prop-score-label{font-size:0.72rem;color:#6A6A6A;font-weight:500;white-space:nowrap}
+.prop-cta{display:inline-block;text-align:center;background:#1C1C1C;color:#FCFBF8;text-decoration:none;font-size:0.74rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:13px 28px;transition:background 0.25s;align-self:flex-start}
+.prop-cta:hover{background:#B8973A}
+.prop-note{font-size:0.68rem;color:#9A9A9A;font-style:italic;margin-top:1rem;line-height:1.5}
+@media(max-width:820px){.prop-row,.prop-row.flip{grid-template-columns:1fr}.prop-row.flip .prop-media{order:0}.prop-row.flip .prop-info{order:0}.prop-media{height:240px}.prop-stats{grid-template-columns:1fr 1fr}}
+
+/* PROCESS TIMELINE */
+.process{padding:8.5rem 5%;background:#F4F1EA;border-top:1px solid rgba(28,28,28,0.05);border-bottom:1px solid rgba(28,28,28,0.05)}
+.process-head{text-align:center;max-width:640px;margin:0 auto 4rem}
+.process-line{max-width:1000px;margin:0 auto;position:relative}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.pstep{text-align:center;position:relative}
+.pstep-num{width:54px;height:54px;border-radius:50%;border:1px solid #B8973A;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-family:'Playfair Display',serif;font-size:1.2rem;color:#B8973A;background:#FCFBF8;position:relative;z-index:2}
+.pstep-title{font-size:0.9rem;font-weight:500;color:#1C1C1C;margin-bottom:0.4rem}
+.pstep-desc{font-size:0.78rem;color:#6A6A6A;line-height:1.55;font-weight:300}
+.process-steps-2{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;max-width:760px;margin-left:auto;margin-right:auto}
+@media(max-width:768px){.process-steps,.process-steps-2{grid-template-columns:repeat(2,1fr);gap:2rem}}
+
+/* TOOLS (dark) */
+.tools{padding:8.5rem 5%;background:#1C1C1C;color:#FCFBF8}
+.tools-inner{max-width:1120px;margin:0 auto}
+.tools-top{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;margin-bottom:4.5rem;align-items:end}
+.tools-eyebrow{font-size:0.65rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#D4B85A;margin-bottom:1.5rem}
+.tools-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.4vw,2.9rem);font-weight:300;line-height:1.2;color:#FCFBF8}
+.tools-h em{font-style:italic;color:#D4B85A}
+.tools-desc{font-size:0.96rem;color:rgba(252,251,248,0.5);line-height:1.85;font-weight:300}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.tool-card{background:#242424;padding:2.5rem 2rem;transition:transform 0.35s ease,background 0.35s ease;border:1px solid rgba(255,255,255,0.04)}
+.tool-card:hover{transform:translateY(-6px);background:#2A2A2A}
+.tool-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:300;color:rgba(184,151,58,0.35);margin-bottom:1.25rem;line-height:1}
+.tool-name{font-size:1.1rem;font-weight:500;color:#FCFBF8;margin-bottom:0.5rem;letter-spacing:0.02em}
+.tool-desc{font-size:0.82rem;color:rgba(252,251,248,0.5);line-height:1.7;font-weight:300;margin-bottom:0.75rem}
+.tool-tag{font-size:0.64rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#D4B85A}
+@media(max-width:768px){.tools-top{grid-template-columns:1fr;gap:2rem}.tools-grid{grid-template-columns:1fr}}
+
+/* EMI CALCULATOR */
+.emi{padding:8.5rem 5%;background:#FCFBF8}
+.emi-inner{max-width:920px;margin:0 auto;background:#FFF;border:1px solid rgba(28,28,28,0.08);box-shadow:0 8px 40px rgba(28,28,28,0.06);overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
+.emi-left{padding:3rem 2.75rem}
+.emi-eyebrow{font-size:0.65rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#B8973A;margin-bottom:1rem}
+.emi-h{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:400;color:#1C1C1C;margin-bottom:0.5rem;line-height:1.2}
+.emi-sub{font-size:0.84rem;color:#6A6A6A;margin-bottom:2rem;font-weight:300;line-height:1.6}
+.emi-field{margin-bottom:1.5rem}
+.emi-field-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.5rem}
+.emi-field label{font-size:0.74rem;font-weight:500;color:#4A4A4A;text-transform:uppercase;letter-spacing:0.06em}
+.emi-field-val{font-size:0.92rem;font-weight:600;color:#B8973A}
+.emi-slider{width:100%;-webkit-appearance:none;appearance:none;height:4px;background:rgba(28,28,28,0.12);border-radius:3px;outline:none}
+.emi-slider::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:#1C1C1C;border-radius:50%;cursor:pointer;transition:background 0.2s}
+.emi-slider::-webkit-slider-thumb:hover{background:#B8973A}
+.emi-slider::-moz-range-thumb{width:18px;height:18px;background:#1C1C1C;border-radius:50%;cursor:pointer;border:none}
+.emi-right{background:#24342B;padding:3rem 2.75rem;display:flex;flex-direction:column;justify-content:center;color:#FCFBF8}
+.emi-result-label{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(252,251,248,0.5);margin-bottom:0.75rem}
+.emi-result{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:300;color:#D4B85A;line-height:1;margin-bottom:0.5rem}
+.emi-result-sub{font-size:0.78rem;color:rgba(252,251,248,0.5);margin-bottom:2rem}
+.emi-breakdown{display:flex;flex-direction:column;gap:0.75rem;border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem}
+.emi-break-row{display:flex;justify-content:space-between;font-size:0.82rem}
+.emi-break-row span:first-child{color:rgba(252,251,248,0.55)}
+.emi-break-row span:last-child{color:#FCFBF8;font-weight:500}
+.emi-disclaimer{font-size:0.68rem;color:rgba(252,251,248,0.35);margin-top:1.5rem;font-style:italic;line-height:1.5}
+@media(max-width:768px){.emi-inner{grid-template-columns:1fr}}
+
+/* PROMISES */
+.promises{padding:8.5rem 5%;background:#F4F1EA;border-bottom:1px solid rgba(28,28,28,0.05)}
+.promises-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;max-width:1120px;margin:0 auto;align-items:start}
+.promises-h{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;line-height:1.2;color:#1C1C1C;margin-bottom:3rem}
+.promises-h em{font-style:italic;color:#B8973A}
+.promise-list{list-style:none;display:flex;flex-direction:column}
+.promise-item{display:flex;gap:1.5rem;align-items:flex-start;padding:1.5rem 0;border-bottom:1px solid rgba(28,28,28,0.08)}
+.promise-item:first-child{border-top:1px solid rgba(28,28,28,0.08)}
+.promise-n{font-family:'Playfair Display',serif;font-size:1rem;font-weight:300;color:#B8973A;min-width:28px;line-height:1.6}
+.promise-t{font-size:0.88rem;color:#3A3A3A;line-height:1.65;font-weight:300}
+.promise-t strong{display:block;font-weight:500;color:#1C1C1C;margin-bottom:0.2rem;font-size:0.92rem}
+.pull{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.2vw,1.8rem);font-style:italic;font-weight:300;line-height:1.5;color:#1C1C1C;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(28,28,28,0.1)}
+.pull em{color:#B8973A}
+.pull-meta{font-size:0.78rem;color:#9A9A9A;margin-bottom:3rem}
+.btn-dark{display:inline-block;background:#1C1C1C;color:#FCFBF8;font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:15px 38px;text-decoration:none;transition:background 0.2s}
+.btn-dark:hover{background:#B8973A}
+@media(max-width:768px){.promises-inner{grid-template-columns:1fr;gap:3rem}}
+
+/* FEARS */
+.fears{padding:8.5rem 5%;background:#FCFBF8}
+.fears-h{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;line-height:1.2;color:#1C1C1C;max-width:520px;margin-bottom:3.5rem}
+.fears-h em{font-style:italic;color:#B8973A}
+.fears-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;max-width:1120px}
+.fear-card{background:#F4F1EA;padding:2.5rem 2.25rem;transition:transform 0.35s ease}
+.fear-card:hover{transform:translateY(-4px)}
+.fear-q{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;font-weight:300;color:#1C1C1C;margin-bottom:1rem;line-height:1.5}
+.fear-divider{width:24px;height:1px;background:#B8973A;margin-bottom:1rem;display:block}
+.fear-a{font-size:0.86rem;color:#5A5A5A;line-height:1.75;font-weight:300}
+@media(max-width:600px){.fears-grid{grid-template-columns:1fr}}
+
+/* VIDEO */
+.video-s{padding:8.5rem 5%;background:#24342B}
+.video-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;max-width:1120px;margin:0 auto}
+.video-eyebrow{font-size:0.65rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:#D4B85A;margin-bottom:1.5rem}
+.video-h{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.7rem);font-weight:300;line-height:1.2;color:#FCFBF8;margin-bottom:1.5rem}
+.video-h em{font-style:italic;color:#D4B85A}
+.video-p{font-size:0.88rem;color:rgba(252,251,248,0.5);line-height:1.85;font-weight:300}
+.video-frame{position:relative;background:#1A1A1A;aspect-ratio:16/9;overflow:hidden;cursor:pointer}
+.video-frame img{width:100%;height:100%;object-fit:cover;opacity:0.5;transition:opacity 0.3s;display:block}
+.video-frame:hover img{opacity:0.65}
+.play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem}
+.play-circle{width:74px;height:74px;border:1px solid rgba(255,255,255,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:border-color 0.25s,transform 0.25s}
+.video-frame:hover .play-circle{border-color:#D4B85A;transform:scale(1.08)}
+.play-circle svg{width:20px;height:20px;fill:#FFF;margin-left:3px}
+.play-label{font-size:0.7rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5)}
+@media(max-width:768px){.video-inner{grid-template-columns:1fr;gap:3rem}}
+
+/* CONSULT */
+.consult{padding:8.5rem 5%;background:#FCFBF8}
+.consult-inner{max-width:640px;margin:0 auto}
+.consult-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.15;color:#1C1C1C;margin-bottom:0.75rem;text-align:center}
+.consult-h em{font-style:italic;color:#B8973A}
+.consult-rule{width:32px;height:1px;background:#B8973A;margin:1.5rem auto 2rem;display:block}
+.consult-sub{font-size:0.92rem;color:#6A6A6A;text-align:center;line-height:1.85;font-weight:300;margin-bottom:3rem}
+.form{display:flex;flex-direction:column;gap:1.25rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.f-group{display:flex;flex-direction:column;gap:0.5rem}
+.f-label{font-size:0.65rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#9A9A9A}
+.f-input,.f-select{background:#FFF;border:1px solid rgba(28,28,28,0.15);color:#1C1C1C;font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:300;padding:13px 16px;outline:none;width:100%;transition:border-color 0.25s;-webkit-appearance:none;appearance:none}
+.f-input:focus,.f-select:focus{border-color:#1C1C1C}
+.f-input::placeholder{color:#C8C8C8}
+.f-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A9A9A' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.f-submit{background:#1C1C1C;color:#FCFBF8;font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;padding:16px;border:none;cursor:pointer;transition:background 0.2s;margin-top:0.5rem}
+.f-submit:hover{background:#B8973A}
+.f-note{font-size:0.72rem;color:#B8B8B8;text-align:center;line-height:1.6}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}}
+
+/* FLOATING WHATSAPP */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:900;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(37,211,102,0.4);transition:transform 0.25s;cursor:pointer}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+
+/* FOOTER */
+footer{background:#161616;padding:4.5rem 5% 3rem;color:rgba(252,251,248,0.5)}
+.footer-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:3rem;margin-bottom:3rem;max-width:1200px;margin-left:auto;margin-right:auto}
+.f-brand{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:300;color:#FCFBF8;margin-bottom:0.4rem;letter-spacing:0.05em}
+.f-brand em{font-style:italic;color:#B8973A}
+.f-tagline{font-size:0.78rem;color:rgba(252,251,248,0.35);margin-bottom:1.5rem;line-height:1.6}
+.f-contact a{display:block;color:rgba(252,251,248,0.5);text-decoration:none;font-size:0.82rem;margin-bottom:0.5rem;font-weight:300;transition:color 0.2s}
+.f-contact a:hover{color:#B8973A}
+.f-col-title{font-size:0.62rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:rgba(252,251,248,0.35);margin-bottom:1rem}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:0.6rem}
+.f-links a{color:rgba(252,251,248,0.5);text-decoration:none;font-size:0.82rem;font-weight:300;transition:color 0.2s}
+.f-links a:hover{color:#B8973A}
+.f-newsletter input{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:#FCFBF8;font-family:'Inter',sans-serif;font-size:0.82rem;padding:11px 14px;outline:none;margin-bottom:0.6rem}
+.f-newsletter input::placeholder{color:rgba(252,251,248,0.3)}
+.f-newsletter button{width:100%;background:#B8973A;color:#161616;border:none;font-family:'Inter',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:11px;cursor:pointer;transition:background 0.2s}
+.f-newsletter button:hover{background:#D4B85A}
+.f-bottom{padding-top:2rem;border-top:1px solid rgba(255,255,255,0.06);font-size:0.68rem;color:rgba(252,251,248,0.25);line-height:1.8;max-width:1200px;margin:0 auto}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr;gap:2.5rem}}
+
+/* INTERACTIVE SUITE */
+.suite{padding:8.5rem 5%;background:#F4F1EA;border-top:1px solid rgba(28,28,28,0.05)}
+.suite-tabs{display:flex;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;max-width:1120px;margin-left:auto;margin-right:auto;border-bottom:1px solid rgba(28,28,28,0.1)}
+.suite-tab{font-size:0.74rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:0.85rem 1.5rem;color:#9A9A9A;cursor:pointer;border-bottom:1.5px solid transparent;margin-bottom:-1px;background:none;border-top:none;border-left:none;border-right:none;font-family:'Inter',sans-serif;transition:color 0.2s,border-color 0.2s}
+.suite-tab.active{color:#1C1C1C;border-bottom-color:#B8973A}
+.suite-panel{display:none;max-width:920px;margin:0 auto}
+.suite-panel.active{display:block}
+.suite-card{background:#FFF;border:1px solid rgba(28,28,28,0.08);box-shadow:0 8px 40px rgba(28,28,28,0.06);overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
+.suite-left{padding:2.75rem}
+.suite-right{background:#24342B;padding:2.75rem;display:flex;flex-direction:column;justify-content:center;color:#FCFBF8}
+.suite-h{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;color:#1C1C1C;margin-bottom:0.5rem;line-height:1.25}
+.suite-h.center{text-align:center}
+.suite-sub{font-size:0.84rem;color:#6A6A6A;margin-bottom:2rem;font-weight:300;line-height:1.6}
+.suite-sub.center{text-align:center;max-width:560px;margin-left:auto;margin-right:auto}
+.suite-match{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.1);font-size:0.84rem;color:#D4B85A;font-weight:500}
+.suite-compare{background:#FFF;border:1px solid rgba(28,28,28,0.08);box-shadow:0 8px 40px rgba(28,28,28,0.06);padding:2.5rem}
+.suite-compare-intro{font-size:0.9rem;color:#5A5A5A;line-height:1.7;margin-bottom:2rem;font-weight:300;text-align:center;max-width:620px;margin-left:auto;margin-right:auto}
+.compare-table-wrap{overflow-x:auto}
+.compare-table{width:100%;border-collapse:collapse;font-size:0.86rem}
+.compare-table th{text-align:left;font-size:0.66rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#9A9A9A;padding:0.75rem 1rem;border-bottom:1px solid rgba(28,28,28,0.1)}
+.compare-table td{padding:0.9rem 1rem;border-bottom:1px solid rgba(28,28,28,0.06);color:#4A4A4A;font-weight:300}
+.compare-table tr:hover td{background:#FAF8F2}
+.ca-name{font-family:'Playfair Display',serif;font-size:1rem;color:#1C1C1C!important;font-weight:500}
+.suite-note-c{font-size:0.7rem;color:#9A9A9A;font-style:italic;margin-top:1.5rem;text-align:center}
+.suite-builder{background:#FFF;border:1px solid rgba(28,28,28,0.08);box-shadow:0 8px 40px rgba(28,28,28,0.06);padding:3rem 2.75rem}
+.builder-search{display:flex;gap:0.75rem;max-width:560px;margin:2rem auto;flex-wrap:wrap}
+.builder-input{flex:1;min-width:220px;background:#FAF8F2;border:1px solid rgba(28,28,28,0.15);color:#1C1C1C;font-family:'Inter',sans-serif;font-size:0.92rem;padding:14px 18px;outline:none;transition:border-color 0.2s}
+.builder-input:focus{border-color:#B8973A}
+.builder-btn{background:#1C1C1C;color:#FCFBF8;border:none;font-family:'Inter',sans-serif;font-size:0.76rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:14px 28px;cursor:pointer;transition:background 0.2s;white-space:nowrap}
+.builder-btn:hover{background:#B8973A}
+.builder-points{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem;max-width:680px;margin-left:auto;margin-right:auto}
+.bpoint{text-align:center;display:flex;flex-direction:column;gap:0.5rem;align-items:center}
+.bpoint-ic{font-size:1.5rem}
+.bpoint span:last-child{font-size:0.76rem;color:#6A6A6A;line-height:1.4}
+@media(max-width:768px){.suite-card{grid-template-columns:1fr}.builder-points{grid-template-columns:1fr 1fr;gap:1.75rem}}
+
+/* MAP */
+.mapsec{padding:8.5rem 5%;background:#FCFBF8}
+.map-wrap{display:grid;grid-template-columns:1.6fr 1fr;gap:0;max-width:1120px;margin:0 auto;border:1px solid rgba(28,28,28,0.08);box-shadow:0 8px 40px rgba(28,28,28,0.06);overflow:hidden;min-height:480px}
+.map-visual{position:relative;background:#E8E5DD;min-height:480px}
+.map-photos{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr)}
+.map-photo{background-size:cover;background-position:center;position:relative;overflow:hidden}
+.map-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.55),transparent 60%);transition:background 0.3s}
+.map-photo:hover::after{background:linear-gradient(to top,rgba(184,151,58,0.45),transparent 60%)}
+.map-photo span{position:absolute;bottom:12px;left:14px;z-index:2;color:#fff;font-size:0.78rem;font-weight:500;letter-spacing:0.04em}
+.map-list{background:#1C1C1C;padding:2.5rem 2.25rem;display:flex;flex-direction:column;color:#FCFBF8}
+.map-list-title{font-size:0.66rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#D4B85A;margin-bottom:1.75rem}
+.map-item{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.07)}
+.map-dot{width:10px;height:10px;border-radius:50%;background:#FCFBF8;margin-top:5px;flex-shrink:0}
+.map-dot.gold{background:#D4B85A}
+.map-item strong{display:block;font-size:0.92rem;font-weight:500;color:#FCFBF8;margin-bottom:2px}
+.map-item span{font-size:0.74rem;color:rgba(252,251,248,0.45)}
+.map-cta{margin-top:auto;padding-top:1.75rem;color:#D4B85A;text-decoration:none;font-size:0.78rem;font-weight:500;letter-spacing:0.04em;transition:color 0.2s}
+.map-cta:hover{color:#FCFBF8}
+@media(max-width:768px){.map-wrap{grid-template-columns:1fr}.map-visual{min-height:320px}}
+
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <a href="#" class="logo">
-                <div class="logo-icon">◎</div>
-                Orbit<span>Estate</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#locations">Locations</a></li>
-                <li><a href="#nri">NRI Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="https://wa.me/918779772436?text=Hi%2C%20I%27m%20interested%20in%20property%20consultation" class="nav-cta">Get Started</a>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-tag">Pan-India & Middle East Coverage</div>
-                <h1>Your Trusted <span>Real Estate</span> Partner</h1>
-                <p>Expert property consultation for buyers, sellers, and investors. From Mumbai to Dubai, we help you make informed real estate decisions.</p>
-                <div class="hero-buttons">
-                    <a href="https://wa.me/918779772436?text=Hi%2C%20I%27m%20looking%20for%20property%20consultation" class="btn-primary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                        </svg>
-                        Chat on WhatsApp
-                    </a>
-                    <a href="#contact" class="btn-secondary">
-                        Book Consultation
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-number">1700+</div>
-                    <div class="stat-label">Happy Clients</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">₹500Cr+</div>
-                    <div class="stat-label">Properties Sold</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">Cities Covered</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">9</div>
-                    <div class="stat-label">Countries</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo"><em>O</em>Orbit Estate</div>
+  <div class="loader-bar"></div>
+</div>
 
-    <!-- Services -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">What We Offer</div>
-                <h2 class="section-title">Our Services</h2>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🏠</div>
-                    <h3>Buy Property</h3>
-                    <p>Find your dream home with our expert guidance. From apartments to villas, we help you discover the perfect property that matches your needs and budget.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">💰</div>
-                    <h3>Sell Property</h3>
-                    <p>Maximize your property's value with our strategic marketing and vast buyer network. Get the best price with transparent, hassle-free transactions.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">📈</div>
-                    <h3>Investment Advisory</h3>
-                    <p>Make informed investment decisions with our market analysis and ROI projections. Build wealth through strategic real estate investments.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🏢</div>
-                    <h3>Commercial Real Estate</h3>
-                    <p>Office spaces, retail outlets, and industrial properties. We help businesses find the perfect location to grow and thrive.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">📋</div>
-                    <h3>Legal Documentation</h3>
-                    <p>Complete assistance with property registration, title verification, and all legal documentation for a secure transaction.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🌍</div>
-                    <h3>NRI Services</h3>
-                    <p>Specialized services for Non-Resident Indians. Remote property management, investment guidance, and hassle-free transactions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- NAV -->
+<nav id="nav">
+  <a class="logo" href="#"><em>O</em>Orbit Estate</a>
+  <ul class="nav-center" id="navMenu">
+    <li><a href="#top">Home</a></li>
+    <li><a href="#why">About</a></li>
+    <li><a href="#who">Advisory</a></li>
+    <li><a href="#props">Properties</a></li>
+    <li><a href="#tools">Services</a></li>
+    <li><a href="#calculators">Tools</a></li>
+    <li><a href="#consult">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#consult">Speak with an advisor</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
 
-    <!-- Locations -->
-    <section class="locations" id="locations">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-tag">Where We Operate</div>
-                <h2 class="section-title">Prime Locations</h2>
-            </div>
-            
-            <div class="locations-grid">
-                <div class="location-card">
-                    <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=600" alt="Mumbai">
-                    <div class="location-info">
-                        <h4>Mumbai</h4>
-                        <span>Worli • Bandra • Powai</span>
-                    </div>
-                </div>
-                
-                <div class="location-card">
-                    <img src="https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=600" alt="Navi Mumbai">
-                    <div class="location-info">
-                        <h4>Navi Mumbai</h4>
-                        <span>Panvel • Kharghar • Ulwe</span>
-                    </div>
-                </div>
-                
-                <div class="location-card">
-                    <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600" alt="Dubai">
-                    <div class="location-info">
-                        <h4>Dubai</h4>
-                        <span>Downtown • Marina • Palm</span>
-                    </div>
-                </div>
-                
-                <div class="location-card">
-                    <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=600" alt="Thane">
-                    <div class="location-info">
-                        <h4>Thane</h4>
-                        <span>Ghodbunder • Majiwada</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="hero" id="top" style="padding-top:0">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-label">Navi Mumbai · Property Advisory</p>
+    <p class="hero-name" id="hero-name"></p>
+    <h1 class="hero-h"><span id="rotator-text"></span></h1>
+    <p class="hero-sub">Correct advice. Confident decisions. Residential, commercial and investment guidance in Navi Mumbai — entirely on your side.</p>
+    <div class="hero-btns">
+      <a class="btn-white" href="#consult">Schedule your private consultation</a>
+      <a class="btn-ghost-white" href="#who">How we work</a>
+    </div>
+    <div class="hero-trust">
+      <div class="hero-trust-item"><span class="hero-trust-num">100%</span><span class="hero-trust-label">RERA-verified projects</span></div>
+      <div class="hero-trust-item"><span class="hero-trust-num">₹0</span><span class="hero-trust-label">Advisory fee for buyers</span></div>
+      <div class="hero-trust-item"><span class="hero-trust-num">Buyer</span><span class="hero-trust-label">side. Always.</span></div>
+    </div>
+  </div>
+</section>
 
-    <!-- NRI Section -->
-    <section class="nri" id="nri">
-        <div class="container">
-            <div class="nri-content">
-                <div class="nri-text">
-                    <h2>Invest in India from <span>Anywhere</span></h2>
-                    <p>Living abroad shouldn't stop you from investing in Indian real estate. Our dedicated NRI desk provides end-to-end support for overseas Indians looking to buy, sell, or manage properties back home.</p>
-                    
-                    <div class="nri-features">
-                        <div class="nri-feature">
-                            <div class="nri-feature-icon">✓</div>
-                            <span>Virtual Property Tours</span>
-                        </div>
-                        <div class="nri-feature">
-                            <div class="nri-feature-icon">✓</div>
-                            <span>Power of Attorney Support</span>
-                        </div>
-                        <div class="nri-feature">
-                            <div class="nri-feature-icon">✓</div>
-                            <span>FEMA Compliance</span>
-                        </div>
-                        <div class="nri-feature">
-                            <div class="nri-feature-icon">✓</div>
-                            <span>Rental Management</span>
-                        </div>
-                        <div class="nri-feature">
-                            <div class="nri-feature-icon">✓</div>
-                            <span>Repatriation Guidance</span>
-                        </div>
-                        <div class="nri-feature">
-                            <div class="nri-feature-icon">✓</div>
-                            <span>24/7 Support (All Timezones)</span>
-                        </div>
-                    </div>
-                    
-                    <a href="https://wa.me/918779772436?text=Hi%2C%20I%27m%20an%20NRI%20interested%20in%20investing%20in%20Indian%20property" class="btn-primary" style="margin-top: 30px;">
-                        Connect with NRI Desk
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-                
-                <div class="nri-image">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600" alt="Luxury Property">
-                    <div class="nri-badge">
-                        <div class="nri-badge-number">16+</div>
-                        <div class="nri-badge-text">NRI Clients</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- INTRO (blue) -->
+<section class="intro" id="why">
+  <div class="intro-inner">
+    <div class="intro-left reveal">
+      <p class="intro-eyebrow">Why we exist</p>
+      <h2 class="intro-h"><span id="intro-rotator"></span></h2>
+      <span class="intro-rule"></span>
+    </div>
+    <div class="intro-right reveal reveal-d1">
+      <p class="intro-p">Buying a home is one of the biggest decisions you'll ever make — yet most people make it with no one truly in their corner. The person guiding you is usually paid by the builder, which means their goal is to close the sale, not to make sure it's the right one for you.</p>
+      <p class="intro-p">OOrbit Estate exists to change that. We verify every builder on MahaRERA before we ever recommend them. We show you the complete cost — every rupee — before you commit. We read your agreement before you sign. <strong>And if something isn't right for you, we'll say so honestly — because your trust matters more to us than any single deal.</strong></p>
+      <p class="intro-verdict">"The most important conversation a buyer can have is an honest one. We made it our entire business."</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Contact Form -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <h2>Let's Start Your Property Journey</h2>
-                    <p>Fill out the form and our expert will get back to you within 24 hours, or reach out directly through WhatsApp for instant response.</p>
-                    
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="contact-method-icon">📱</div>
-                            <div class="contact-method-text">
-                                <span>WhatsApp</span>
-                                <strong>+91 8779772436</strong>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <div class="contact-method-icon">✉️</div>
-                            <div class="contact-method-text">
-                                <span>Email</span>
-                                <strong>hello@orbitestate.com</strong>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <div class="contact-method-icon">📍</div>
-                            <div class="contact-method-text">
-                                <span>Office</span>
-                                <strong>Navi Mumbai, India</strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" name="name" placeholder="John Doe" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <input type="tel" name="phone" placeholder="+91 98765 43210" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" name="email" placeholder="john@example.com" required>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>I'm Looking To</label>
-                            <select name="purpose" required>
-                                <option value="">Select Option</option>
-                                <option value="buy">Buy Property</option>
-                                <option value="sell">Sell Property</option>
-                                <option value="invest">Investment Advisory</option>
-                                <option value="rent">Rent Property</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Budget Range</label>
-                            <select name="budget">
-                                <option value="">Select Budget</option>
-                                <option value="30-50L">₹30-50 Lakhs</option>
-                                <option value="50-80L">₹50-80 Lakhs</option>
-                                <option value="80L-1.5Cr">₹80L - 1.5 Crore</option>
-                                <option value="1.5Cr+">₹1.5 Crore+</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Message (Optional)</label>
-                        <textarea name="message" placeholder="Tell us more about your requirements..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="form-submit">Send Enquiry</button>
-                </form>
-            </div>
-        </div>
-    </section>
+<!-- TRUST BAR -->
+<div class="trustbar">
+  <div class="trustbar-inner">
+    <div class="tb-item reveal"><span class="tb-icon">🛡️</span><span class="tb-label">MahaRERA<br>Verified</span></div>
+    <div class="tb-item reveal reveal-d1"><span class="tb-icon">🏗️</span><span class="tb-label">Builder<br>Background Checks</span></div>
+    <div class="tb-item reveal reveal-d1"><span class="tb-icon">📋</span><span class="tb-label">Agreement<br>Reviews</span></div>
+    <div class="tb-item reveal reveal-d2"><span class="tb-icon">💰</span><span class="tb-label">Honest<br>Price Opinions</span></div>
+    <div class="tb-item reveal reveal-d2"><span class="tb-icon">🏦</span><span class="tb-label">Loan<br>Assistance</span></div>
+    <div class="tb-item reveal reveal-d3"><span class="tb-icon">📝</span><span class="tb-label">Registration<br>Support</span></div>
+  </div>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">Orbit<span>Estate</span></div>
-                <div class="footer-links">
-                    <a href="#services">Services</a>
-                    <a href="#locations">Locations</a>
-                    <a href="#nri">NRI Services</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 Orbit Estate. All rights reserved. | Your Trusted Real Estate Partner</p>
-            </div>
-        </div>
-    </footer>
+<!-- COUNTERS -->
+<section class="counters">
+  <div class="counters-inner">
+    <div class="counters-head reveal">
+      <h2>Trusted guidance, <em>measured in outcomes</em></h2>
+    </div>
+    <div class="counters-grid">
+      <div class="counter reveal"><div class="counter-num" data-target="250" data-suffix="+">0</div><div class="counter-label">Buyers Guided</div></div>
+      <div class="counter reveal reveal-d1"><div class="counter-num" data-target="500" data-suffix="+">0</div><div class="counter-label">Projects Reviewed</div></div>
+      <div class="counter reveal reveal-d2"><div class="counter-num" data-target="40" data-suffix="+">0</div><div class="counter-label">Builder Partners</div></div>
+      <div class="counter reveal reveal-d3"><div class="counter-num" data-target="100" data-suffix="%">0</div><div class="counter-label">RERA Verified</div></div>
+    </div>
+  </div>
+</section>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/918779772436?text=Hi%2C%20I%27m%20interested%20in%20property%20consultation" class="whatsapp-float">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        Chat Now
-    </a>
+<!-- WHO (maroon) -->
+<section class="who" id="who">
+  <div class="who-top">
+    <h2 class="who-h reveal">One city.<br>Three kinds<br>of <em>opportunity.</em></h2>
+    <p class="who-desc reveal reveal-d1">Wherever you are — buying your first home, growing an investment portfolio, or finding the right space for your business — you'll have someone in your corner who knows this market deeply and answers to you alone.</p>
+  </div>
+  <div class="who-grid">
+    <div class="who-card reveal">
+      <p class="who-type">First-time buyers</p>
+      <h3 class="who-title">Your first home shouldn't be a guessing game</h3>
+      <ul class="who-list">
+        <li>PMAY subsidy eligibility check — up to ₹2.67 Lakh you may not know about</li>
+        <li>Every project verified on MahaRERA before we name it to you</li>
+        <li>Complete cost sheet — every rupee, no surprises at registration</li>
+        <li>Home loan guidance — best rate for your exact profile</li>
+        <li>Agreement review — red flags flagged before you sign</li>
+      </ul>
+    </div>
+    <div class="who-card reveal reveal-d1">
+      <p class="who-type">Investors</p>
+      <h3 class="who-title">Where the real returns are — and the honest reason why</h3>
+      <ul class="who-list">
+        <li>Appreciation zone mapping tied to infrastructure timelines</li>
+        <li>Rental yield data — actual numbers, not projections</li>
+        <li>Commercial pre-launch with developer terms in writing</li>
+        <li>Exit strategy — Section 54 zero capital gains tax route</li>
+        <li>We tell you if an area is already overpriced</li>
+      </ul>
+    </div>
+    <div class="who-card reveal reveal-d2">
+      <p class="who-type">Business owners</p>
+      <h3 class="who-title">Own your address. Stop paying rent forever.</h3>
+      <ul class="who-list">
+        <li>Ownership offices in Navi Mumbai's fastest-growing corporate corridor</li>
+        <li>Options from 540 sq ft — right-sized for any stage of business</li>
+        <li>Buy vs lease analysis — when ownership makes better financial sense</li>
+        <li>Pre-launch pricing with priority floor and unit selection</li>
+        <li>Developer documentation reviewed before any commitment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FULLBLEED 1 -->
+<div class="fullbleed">
+  <img src="images/cbd-belapur.jpg" alt="Navi Mumbai skyline" loading="lazy">
+  <div class="fullbleed-overlay"></div>
+  <span class="fullbleed-caption">CBD Belapur · Navi Mumbai's business district</span>
+</div>
+
+<!-- PROPERTIES — magazine -->
+<section class="props" id="props">
+  <div class="props-head reveal">
+    <p class="sec-eye center">Verified opportunities</p>
+    <h2 class="sec-h">What we are recommending <em>right now</em></h2>
+  </div>
+  <div class="props-tabs reveal">
+    <button class="props-tab active" onclick="showTab('res',this)">Residential</button>
+    <button class="props-tab" onclick="showTab('com',this)">Commercial</button>
+  </div>
+
+  <div id="res" class="prop-panel active">
+    <div class="prop-row reveal">
+      <div class="prop-media"><img src="images/jewel-navi-mumbai.jpg" alt="Panvel"><span class="prop-tag">Residential</span></div>
+      <div class="prop-info">
+        <h3 class="prop-name">Panvel — Airport Corridor</h3>
+        <p class="prop-loc">Panvel, Navi Mumbai · Under 10 km from the new airport</p>
+        <p class="prop-why">The closest established residential belt to the upcoming international airport — the strongest appreciation story in the region.</p>
+        <div class="prop-stats">
+          <div class="prop-stat"><label>From</label><span>₹35 Lakh</span></div>
+          <div class="prop-stat"><label>Yield</label><span>~2.9%</span></div>
+          <div class="prop-stat"><label>Type</label><span>1/2/3 BHK</span></div>
+        </div>
+        <div class="prop-score"><span class="prop-score-label">Investment Score</span><div class="prop-score-bar"><div class="prop-score-fill" data-score="88"></div></div><span class="prop-score-label">8.8/10</span></div>
+        <a class="prop-cta" href="#consult">Book a site visit</a>
+      </div>
+    </div>
+    <div class="prop-row flip reveal">
+      <div class="prop-media"><img src="images/kharghar-golf.jpg" alt="Kharghar"><span class="prop-tag">Residential</span></div>
+      <div class="prop-info">
+        <h3 class="prop-name">Kharghar — Established Corridor</h3>
+        <p class="prop-loc">Kharghar, Navi Mumbai · Metro connected</p>
+        <p class="prop-why">For buyers who want infrastructure that already exists — schools, hospitals, malls, and strong resale demand from day one.</p>
+        <div class="prop-stats">
+          <div class="prop-stat"><label>From</label><span>₹65 Lakh</span></div>
+          <div class="prop-stat"><label>Yield</label><span>~3.0%</span></div>
+          <div class="prop-stat"><label>Type</label><span>2/3 BHK</span></div>
+        </div>
+        <div class="prop-score"><span class="prop-score-label">Investment Score</span><div class="prop-score-bar"><div class="prop-score-fill" data-score="82"></div></div><span class="prop-score-label">8.2/10</span></div>
+        <a class="prop-cta" href="#consult">Book a site visit</a>
+      </div>
+    </div>
+    <div class="prop-row reveal">
+      <div class="prop-media"><img src="images/central-park-kharghar.jpg" alt="Ulwe"><span class="prop-tag">Residential</span></div>
+      <div class="prop-info">
+        <h3 class="prop-name">Ulwe — Early Stage, High Upside</h3>
+        <p class="prop-loc">Ulwe, Navi Mumbai · Under 5 km from the new airport</p>
+        <p class="prop-why">The best entry price in Navi Mumbai today, in the zone closest to the airport — for buyers who can move before the infrastructure lands.</p>
+        <div class="prop-stats">
+          <div class="prop-stat"><label>From</label><span>₹42 Lakh</span></div>
+          <div class="prop-stat"><label>Yield</label><span>~3.4%</span></div>
+          <div class="prop-stat"><label>Type</label><span>1/2 BHK</span></div>
+        </div>
+        <div class="prop-score"><span class="prop-score-label">Investment Score</span><div class="prop-score-bar"><div class="prop-score-fill" data-score="90"></div></div><span class="prop-score-label">9.0/10</span></div>
+        <a class="prop-cta" href="#consult">Book a site visit</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="com" class="prop-panel">
+    <div class="prop-row reveal">
+      <div class="prop-media"><img src="images/cbd-belapur.jpg" alt="Windfall"><span class="prop-tag com">Commercial</span></div>
+      <div class="prop-info">
+        <h3 class="prop-name">Codename Windfall — BKC2</h3>
+        <p class="prop-loc">BKC2, Navi Mumbai · Emerging Global CBD</p>
+        <p class="prop-why">Large-format offices in Navi Mumbai's upcoming central business district, with the developer's returns structure provided in writing.</p>
+        <div class="prop-stats">
+          <div class="prop-stat"><label>From</label><span>₹99.99 L</span></div>
+          <div class="prop-stat"><label>Developer</label><span>Delta×Venus</span></div>
+          <div class="prop-stat"><label>RERA</label><span>Verified ✓</span></div>
+        </div>
+        <div class="prop-score"><span class="prop-score-label">Investment Score</span><div class="prop-score-bar"><div class="prop-score-fill" data-score="85"></div></div><span class="prop-score-label">8.5/10</span></div>
+        <a class="prop-cta" href="#consult">Request investor kit</a>
+        <p class="prop-note">Developer returns figures as per their official scheme. Terms apply. We share all documentation before any commitment.</p>
+      </div>
+    </div>
+    <div class="prop-row flip reveal">
+      <div class="prop-media"><img src="images/seawoods-grand-central.jpg" alt="IT Park"><span class="prop-tag com">Commercial</span></div>
+      <div class="prop-info">
+        <h3 class="prop-name">Kamdhenu IT Park</h3>
+        <p class="prop-loc">Thane–Belapur Road · Near IKEA, Navi Mumbai</p>
+        <p class="prop-why">A 4-acre, G+27 corporate landmark with ownership offices and a dedicated leasing tower for MNCs — for businesses ready to own their address.</p>
+        <div class="prop-stats">
+          <div class="prop-stat"><label>From</label><span>540 sq ft</span></div>
+          <div class="prop-stat"><label>Scale</label><span>4 Acres</span></div>
+          <div class="prop-stat"><label>Status</label><span>Pre-launch</span></div>
+        </div>
+        <div class="prop-score"><span class="prop-score-label">Investment Score</span><div class="prop-score-bar"><div class="prop-score-fill" data-score="80"></div></div><span class="prop-score-label">8.0/10</span></div>
+        <a class="prop-cta" href="#consult">Register interest</a>
+        <p class="prop-note">Pre-launch EOI open. Special pricing and priority unit selection for early registrations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS TIMELINE -->
+<section class="process">
+  <div class="process-head reveal">
+    <p class="sec-eye center">How we work with you</p>
+    <h2 class="sec-h">A guided journey, <em>from first call to your keys</em></h2>
+  </div>
+  <div class="process-line">
+    <div class="process-steps">
+      <div class="pstep reveal"><div class="pstep-num">1</div><p class="pstep-title">Consultation</p><p class="pstep-desc">A free, honest conversation about what you want and what's possible.</p></div>
+      <div class="pstep reveal reveal-d1"><div class="pstep-num">2</div><p class="pstep-title">Requirement Analysis</p><p class="pstep-desc">Budget, eligibility, location and priorities — mapped clearly.</p></div>
+      <div class="pstep reveal reveal-d2"><div class="pstep-num">3</div><p class="pstep-title">Property Selection</p><p class="pstep-desc">Only RERA-verified options that genuinely fit your needs.</p></div>
+      <div class="pstep reveal reveal-d3"><div class="pstep-num">4</div><p class="pstep-title">Site Visits</p><p class="pstep-desc">We accompany you, ask the hard questions, and protect your interests.</p></div>
+    </div>
+    <div class="process-steps-2">
+      <div class="pstep reveal"><div class="pstep-num">5</div><p class="pstep-title">Documentation</p><p class="pstep-desc">We review every agreement before you sign anything.</p></div>
+      <div class="pstep reveal reveal-d1"><div class="pstep-num">6</div><p class="pstep-title">Registration</p><p class="pstep-desc">Full support through stamp duty, registration and paperwork.</p></div>
+      <div class="pstep reveal reveal-d2"><div class="pstep-num">7</div><p class="pstep-title">Possession</p><p class="pstep-desc">A 50-point inspection checklist — we stay with you to the keys.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS (dark) -->
+<section class="tools" id="tools">
+  <div class="tools-inner">
+    <div class="tools-top">
+      <div class="reveal">
+        <p class="tools-eyebrow">Free advisory tools</p>
+        <h2 class="tools-h">The clarity, confidence<br>and knowledge every buyer<br>needs — <em>before you decide</em></h2>
+      </div>
+      <p class="tools-desc reveal reveal-d1">You shouldn't have to figure this out alone. These are the tools that hand you the same information developers and agents have always kept for themselves — every one of them free, every one designed to protect you.</p>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card reveal"><div class="tool-num">01</div><p class="tool-name">Builder DNA Report</p><p class="tool-desc">Every builder's complete MahaRERA track record — projects, delivery rate, complaints, violations. Free, in 24 hours.</p><p class="tool-tag">Goes viral — buyers share this</p></div>
+      <div class="tool-card reveal reveal-d1"><div class="tool-num">02</div><p class="tool-name">True Cost Revealer</p><p class="tool-desc">Builder says ₹60L. What will you actually pay? Every rupee — stamp duty, GST, registration, floor rise, parking, corpus.</p><p class="tool-tag">No surprises at registration</p></div>
+      <div class="tool-card reveal reveal-d2"><div class="tool-num">03</div><p class="tool-name">Agreement Red Flag Scan</p><p class="tool-desc">We review your sale agreement before you sign — 25 clauses builders routinely sneak in, flagged in plain language.</p><p class="tool-tag">Nobody else does this</p></div>
+      <div class="tool-card reveal"><div class="tool-num">04</div><p class="tool-name">Property Price Audit</p><p class="tool-desc">Is this property fairly priced? We check it against Ready Reckoner rates and recent registered transactions.</p><p class="tool-tag">We'll tell you if it's overpriced</p></div>
+      <div class="tool-card reveal reveal-d1"><div class="tool-num">05</div><p class="tool-name">EMI Safety Planner</p><p class="tool-desc">What happens if you lose your job? What insurance protects you? What are your moratorium rights? Real answers.</p><p class="tool-tag">The question that stops most buyers</p></div>
+      <div class="tool-card reveal reveal-d2"><div class="tool-num">06</div><p class="tool-name">Area Intelligence Brief</p><p class="tool-desc">Using JLL research and MahaRERA data — current prices, appreciation trend, rental yield, the next 3 years.</p><p class="tool-tag">JLL-grade intelligence, simplified</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EMI CALCULATOR -->
+<section class="emi">
+  <div class="props-head reveal" style="margin-bottom:2.5rem">
+    <p class="sec-eye center">Plan with confidence</p>
+    <h2 class="sec-h">Estimate your <em>monthly EMI</em></h2>
+  </div>
+  <div class="emi-inner reveal">
+    <div class="emi-left">
+      <p class="emi-eyebrow">Home Loan Calculator</p>
+      <h3 class="emi-h">See what your home will cost each month</h3>
+      <p class="emi-sub">Move the sliders to estimate your EMI. For a precise plan tailored to your profile, speak with our advisor.</p>
+      <div class="emi-field">
+        <div class="emi-field-top"><label>Loan Amount</label><span class="emi-field-val" id="amtVal">₹50,00,000</span></div>
+        <input type="range" class="emi-slider" id="amt" min="1000000" max="30000000" step="500000" value="5000000">
+      </div>
+      <div class="emi-field">
+        <div class="emi-field-top"><label>Interest Rate</label><span class="emi-field-val" id="rateVal">8.5%</span></div>
+        <input type="range" class="emi-slider" id="rate" min="7" max="12" step="0.1" value="8.5">
+      </div>
+      <div class="emi-field">
+        <div class="emi-field-top"><label>Tenure</label><span class="emi-field-val" id="tenVal">20 years</span></div>
+        <input type="range" class="emi-slider" id="ten" min="5" max="30" step="1" value="20">
+      </div>
+    </div>
+    <div class="emi-right">
+      <p class="emi-result-label">Your estimated monthly EMI</p>
+      <p class="emi-result" id="emiResult">₹43,391</p>
+      <p class="emi-result-sub">per month</p>
+      <div class="emi-breakdown">
+        <div class="emi-break-row"><span>Principal amount</span><span id="emiPrincipal">₹50,00,000</span></div>
+        <div class="emi-break-row"><span>Total interest</span><span id="emiInterest">₹54,13,840</span></div>
+        <div class="emi-break-row"><span>Total payable</span><span id="emiTotal">₹1,04,13,840</span></div>
+      </div>
+      <p class="emi-disclaimer">Indicative estimate only. Actual EMI depends on the bank, your profile and processing terms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE TOOLS SUITE -->
+<section class="suite" id="calculators">
+  <div class="props-head reveal" style="margin-bottom:3rem">
+    <p class="sec-eye center">Free interactive tools</p>
+    <h2 class="sec-h">Make smarter decisions <em>in seconds</em></h2>
+  </div>
+  <div class="suite-tabs reveal">
+    <button class="suite-tab active" onclick="suiteTab('budget',this)">Budget Planner</button>
+    <button class="suite-tab" onclick="suiteTab('area',this)">Area Comparison</button>
+    <button class="suite-tab" onclick="suiteTab('roi',this)">ROI Calculator</button>
+    <button class="suite-tab" onclick="suiteTab('builder',this)">Builder Check</button>
+  </div>
+
+  <!-- BUDGET PLANNER -->
+  <div id="budget" class="suite-panel active reveal">
+    <div class="suite-card">
+      <div class="suite-left">
+        <h3 class="suite-h">What can you actually afford?</h3>
+        <p class="suite-sub">Tell us your monthly income and existing EMIs. We'll show a realistic budget — and which Navi Mumbai areas fit it.</p>
+        <div class="emi-field">
+          <div class="emi-field-top"><label>Monthly Income</label><span class="emi-field-val" id="bpIncVal">₹1,00,000</span></div>
+          <input type="range" class="emi-slider" id="bpInc" min="30000" max="500000" step="5000" value="100000">
+        </div>
+        <div class="emi-field">
+          <div class="emi-field-top"><label>Existing EMIs / month</label><span class="emi-field-val" id="bpEmiVal">₹0</span></div>
+          <input type="range" class="emi-slider" id="bpEmi" min="0" max="150000" step="2500" value="0">
+        </div>
+        <div class="emi-field">
+          <div class="emi-field-top"><label>Down payment available</label><span class="emi-field-val" id="bpDpVal">₹10,00,000</span></div>
+          <input type="range" class="emi-slider" id="bpDp" min="0" max="10000000" step="100000" value="1000000">
+        </div>
+      </div>
+      <div class="suite-right">
+        <p class="emi-result-label">You can comfortably afford a home up to</p>
+        <p class="emi-result" id="bpResult">₹62 Lakh</p>
+        <p class="emi-result-sub">based on a safe 40% EMI-to-income ratio</p>
+        <div class="emi-breakdown">
+          <div class="emi-break-row"><span>Safe monthly EMI</span><span id="bpSafeEmi">₹40,000</span></div>
+          <div class="emi-break-row"><span>Eligible loan (20 yr @ 8.5%)</span><span id="bpLoan">₹46 L</span></div>
+          <div class="emi-break-row"><span>+ Your down payment</span><span id="bpDp2">₹10 L</span></div>
+        </div>
+        <p class="suite-match" id="bpMatch">Areas that fit: Ulwe, Taloja, Panvel</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AREA COMPARISON -->
+  <div id="area" class="suite-panel reveal">
+    <div class="suite-compare">
+      <p class="suite-compare-intro">Compare Navi Mumbai's key residential areas side by side — honest data on price, yield, and what's driving each one.</p>
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr><th>Area</th><th>Avg ₹/sq ft</th><th>Rental Yield</th><th>Airport</th><th>Best For</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="ca-name">Panvel</td><td>₹7,500–9,500</td><td>2.9%</td><td>~10 km</td><td>Balanced growth</td></tr>
+            <tr><td class="ca-name">Kharghar</td><td>₹9,000–12,000</td><td>3.0%</td><td>~18 km</td><td>Ready infrastructure</td></tr>
+            <tr><td class="ca-name">Ulwe</td><td>₹6,500–8,500</td><td>3.4%</td><td>~5 km</td><td>Highest upside</td></tr>
+            <tr><td class="ca-name">Taloja</td><td>₹5,000–7,000</td><td>3.6%</td><td>~15 km</td><td>Best entry price</td></tr>
+            <tr><td class="ca-name">Nerul</td><td>₹13,000–17,000</td><td>2.6%</td><td>~22 km</td><td>Premium living</td></tr>
+            <tr><td class="ca-name">Belapur</td><td>₹11,000–15,000</td><td>2.7%</td><td>~20 km</td><td>Commercial hub</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="suite-note-c">Figures are indicative market ranges. For a tailored comparison based on your budget and goals, book a consultation.</p>
+    </div>
+  </div>
+
+  <!-- ROI CALCULATOR -->
+  <div id="roi" class="suite-panel reveal">
+    <div class="suite-card">
+      <div class="suite-left">
+        <h3 class="suite-h">What return could this property give you?</h3>
+        <p class="suite-sub">Estimate your total return — rental income plus appreciation — over your holding period.</p>
+        <div class="emi-field">
+          <div class="emi-field-top"><label>Property Price</label><span class="emi-field-val" id="roiPriceVal">₹50,00,000</span></div>
+          <input type="range" class="emi-slider" id="roiPrice" min="2000000" max="30000000" step="500000" value="5000000">
+        </div>
+        <div class="emi-field">
+          <div class="emi-field-top"><label>Expected appreciation / year</label><span class="emi-field-val" id="roiAppVal">8%</span></div>
+          <input type="range" class="emi-slider" id="roiApp" min="3" max="15" step="0.5" value="8">
+        </div>
+        <div class="emi-field">
+          <div class="emi-field-top"><label>Monthly rent</label><span class="emi-field-val" id="roiRentVal">₹15,000</span></div>
+          <input type="range" class="emi-slider" id="roiRent" min="0" max="100000" step="1000" value="15000">
+        </div>
+        <div class="emi-field">
+          <div class="emi-field-top"><label>Holding period</label><span class="emi-field-val" id="roiYrVal">7 years</span></div>
+          <input type="range" class="emi-slider" id="roiYr" min="1" max="20" step="1" value="7">
+        </div>
+      </div>
+      <div class="suite-right">
+        <p class="emi-result-label">Estimated value after holding period</p>
+        <p class="emi-result" id="roiResult">₹85.7 L</p>
+        <p class="emi-result-sub">total return including rent</p>
+        <div class="emi-breakdown">
+          <div class="emi-break-row"><span>Capital appreciation</span><span id="roiApprec">₹35.7 L</span></div>
+          <div class="emi-break-row"><span>Total rental income</span><span id="roiRentTotal">₹12.6 L</span></div>
+          <div class="emi-break-row"><span>Total gain</span><span id="roiGain">₹48.3 L</span></div>
+          <div class="emi-break-row"><span>Total return</span><span id="roiPct">+96%</span></div>
+        </div>
+        <p class="emi-disclaimer">Indicative projection only. Actual returns depend on market conditions and are not guaranteed.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUILDER CHECK -->
+  <div id="builder" class="suite-panel reveal">
+    <div class="suite-builder">
+      <h3 class="suite-h center">Check any builder before you trust them</h3>
+      <p class="suite-sub center">Enter a builder or project name. We'll pull their MahaRERA track record and send you a full Builder DNA Report — free, within 24 hours.</p>
+      <div class="builder-search">
+        <input type="text" id="builderInput" class="builder-input" placeholder="e.g. Delta Realty, Codename Windfall...">
+        <button class="builder-btn" onclick="builderCheck()">Request Report →</button>
+      </div>
+      <div class="builder-points">
+        <div class="bpoint"><span class="bpoint-ic">🏗️</span><span>Projects registered on MahaRERA</span></div>
+        <div class="bpoint"><span class="bpoint-ic">⏱️</span><span>On-time delivery track record</span></div>
+        <div class="bpoint"><span class="bpoint-ic">⚠️</span><span>Complaints &amp; violations filed</span></div>
+        <div class="bpoint"><span class="bpoint-ic">✅</span><span>Our honest verdict</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPERTY MAP -->
+<section class="mapsec" id="map">
+  <div class="props-head reveal" style="margin-bottom:3rem">
+    <p class="sec-eye center">Where we're recommending</p>
+    <h2 class="sec-h">Our properties <em>across Navi Mumbai</em></h2>
+  </div>
+  <div class="map-wrap reveal">
+    <div class="map-visual">
+      <div class="map-photos">
+        <div class="map-photo" style="background-image:url('images/jewel-navi-mumbai.jpg')"><span>Panvel</span></div>
+        <div class="map-photo" style="background-image:url('images/central-park-kharghar.jpg')"><span>Ulwe</span></div>
+        <div class="map-photo" style="background-image:url('images/kharghar-golf.jpg')"><span>Kharghar</span></div>
+        <div class="map-photo" style="background-image:url('images/cbd-belapur.jpg')"><span>BKC2 · Windfall</span></div>
+        <div class="map-photo" style="background-image:url('images/seawoods-grand-central.jpg')"><span>Seawoods</span></div>
+        <div class="map-photo" style="background-image:url('images/nerul-uran-railway.jpg')"><span>Nerul–Uran</span></div>
+      </div>
+    </div>
+    <div class="map-list">
+      <p class="map-list-title">Featured locations</p>
+      <div class="map-item" data-tab="res"><span class="map-dot"></span><div><strong>Panvel</strong><span>Residential · Airport corridor</span></div></div>
+      <div class="map-item"><span class="map-dot"></span><div><strong>Ulwe</strong><span>Residential · 5 km from airport</span></div></div>
+      <div class="map-item"><span class="map-dot"></span><div><strong>Kharghar</strong><span>Residential · Metro connected</span></div></div>
+      <div class="map-item"><span class="map-dot gold"></span><div><strong>BKC2 — Windfall</strong><span>Commercial · Global CBD</span></div></div>
+      <div class="map-item"><span class="map-dot gold"></span><div><strong>Thane–Belapur</strong><span>Commercial · IT Park</span></div></div>
+      <a class="map-cta" href="#consult">Book a site visit across any location →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- FULLBLEED 2 -->
+<div class="fullbleed">
+  <img src="images/palm-beach-road.jpg" alt="Luxury interior" loading="lazy">
+  <div class="fullbleed-overlay"></div>
+  <span class="fullbleed-caption">Palm Beach Road · Navi Mumbai</span>
+</div>
+
+<!-- PROMISES -->
+<section class="promises">
+  <div class="promises-inner">
+    <div class="reveal">
+      <p class="sec-eye">Our promise to you</p>
+      <h2 class="promises-h">Six things we'll always<br>do for <em>you</em></h2>
+      <ul class="promise-list">
+        <li class="promise-item"><span class="promise-n">01</span><div class="promise-t"><strong>We check your PMAY eligibility first</strong>So you know what the government already owes you.</div></li>
+        <li class="promise-item"><span class="promise-n">02</span><div class="promise-t"><strong>Every project is RERA verified before we name it</strong>Registration, track record, complaint history — checked.</div></li>
+        <li class="promise-item"><span class="promise-n">03</span><div class="promise-t"><strong>You get the complete cost sheet before you decide</strong>Every rupee. No surprises at the end.</div></li>
+        <li class="promise-item"><span class="promise-n">04</span><div class="promise-t"><strong>We review your agreement before you sign</strong>Every red flag flagged, every clause explained.</div></li>
+        <li class="promise-item"><span class="promise-n">05</span><div class="promise-t"><strong>We will tell you if a deal is wrong for you</strong>Even if it costs us the commission.</div></li>
+        <li class="promise-item"><span class="promise-n">06</span><div class="promise-t"><strong>We stay with you from first question to possession</strong>Not just until we get paid.</div></li>
+      </ul>
+    </div>
+    <div class="reveal reveal-d1">
+      <p class="pull">"Before you sign anything —<br>talk to someone <em>on your side.</em>"</p>
+      <p class="pull-meta">— OOrbit Estate, Navi Mumbai</p>
+      <p style="font-size:0.86rem;color:#5A5A5A;line-height:1.85;font-weight:300;margin-bottom:2.5rem">We built this advisory because the most important conversation most property buyers never have is simply an honest one. No agenda. No pressure. Just someone with deep knowledge of this market — working entirely for you.</p>
+      <a class="btn-dark" href="#consult">Start the conversation</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEARS -->
+<section class="fears">
+  <div style="max-width:1120px;margin:0 auto">
+    <p class="sec-eye reveal">Honest answers</p>
+    <h2 class="fears-h reveal">The questions that keep you up at night — <em>answered honestly</em></h2>
+    <div class="fears-grid">
+      <div class="fear-card reveal"><p class="fear-q">"What if the builder takes my money and disappears?"</p><span class="fear-divider"></span><p class="fear-a">We only recommend MahaRERA registered projects. By law, 70% of buyer funds must sit in escrow — accessible only for that project's construction. We show you how to verify this yourself before you pay anything.</p></div>
+      <div class="fear-card reveal reveal-d1"><p class="fear-q">"What happens to my EMI if I lose my job?"</p><span class="fear-divider"></span><p class="fear-a">Home Loan Protection Insurance covers your EMI in case of job loss or disability. Banks also offer moratorium options. We walk you through every protection before you sign the loan agreement.</p></div>
+      <div class="fear-card reveal"><p class="fear-q">"Is this really the right time, or will prices fall after I buy?"</p><span class="fear-divider"></span><p class="fear-a">We give you the infrastructure data, appreciation history and rental yields — and tell you honestly which areas are still pre-boom and which are already overpriced. Then you decide.</p></div>
+      <div class="fear-card reveal reveal-d1"><p class="fear-q">"What if I need to sell later — will I find a buyer?"</p><span class="fear-divider"></span><p class="fear-a">Navi Mumbai has strong resale liquidity near transit and airport corridors. We also walk you through Section 54 — the legal route to sell property and pay zero capital gains tax.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-s" id="video">
+  <div class="video-inner">
+    <div class="reveal">
+      <p class="video-eyebrow">Watch first</p>
+      <h2 class="video-h">One honest conversation<br>before you decide <em>anything</em></h2>
+      <p class="video-p" style="margin-bottom:1.5rem">Our advisor will tell you in 90 seconds what every property buyer in Navi Mumbai deserves to hear — and what no other agent will say to your face.</p>
+      <p class="video-p" style="font-style:italic;color:rgba(252,251,248,0.35)">"I know you're thinking about buying a home and you don't know who to trust. Most agents are not on your side. We decided to do this differently."</p>
+    </div>
+    <div class="reveal reveal-d1">
+      <div class="video-frame" onclick="alert('Video coming shortly — meanwhile, book a free call below.')">
+        <img src="images/navi-mumbai-airport.jpg" alt="Advisory">
+        <div class="play"><div class="play-circle"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span class="play-label">Watch now</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULT -->
+<section class="consult" id="consult">
+  <div class="consult-inner">
+    <p class="sec-eye center reveal">Begin the conversation</p>
+    <h2 class="consult-h reveal">Schedule your <em>private consultation</em></h2>
+    <span class="consult-rule"></span>
+    <p class="consult-sub reveal">Tell us where you are in your property journey. We'll give you a straight, honest picture — what's available, what it actually costs, what you qualify for, and whether any of it makes sense for you right now.</p>
+    <form class="form reveal" onsubmit="submitForm(event)">
+      <div class="form-row">
+        <div class="f-group"><label class="f-label">Your name</label><input class="f-input" type="text" id="fn" placeholder="Rahul Sharma" required></div>
+        <div class="f-group"><label class="f-label">WhatsApp number</label><input class="f-input" type="tel" id="fp" placeholder="+91 98200 00000" required></div>
+      </div>
+      <div class="f-group"><label class="f-label">I am looking for</label>
+        <select class="f-select" id="ft" required>
+          <option value="" disabled selected>Select your interest</option>
+          <option>My first home in Navi Mumbai</option>
+          <option>Investment or rental income property</option>
+          <option>Commercial or office space</option>
+          <option>Codename Windfall — commercial investment</option>
+          <option>Kamdhenu IT Park — office ownership</option>
+          <option>Understanding the market before deciding</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="f-group"><label class="f-label">Budget</label>
+          <select class="f-select" id="fb">
+            <option value="" disabled selected>Select range</option>
+            <option>Under ₹50 Lakh</option><option>₹50 Lakh – ₹1 Crore</option>
+            <option>₹1 Crore – ₹2 Crore</option><option>₹2 Crore+</option><option>Still deciding</option>
+          </select>
+        </div>
+        <div class="f-group"><label class="f-label">Preferred time</label>
+          <select class="f-select" id="fpt">
+            <option value="" disabled selected>Select time</option>
+            <option>Morning (10am–1pm)</option><option>Afternoon (1pm–5pm)</option>
+            <option>Evening (5pm–8pm)</option><option>Weekend</option>
+          </select>
+        </div>
+      </div>
+      <button class="f-submit" type="submit">Send to WhatsApp — Book my consultation →</button>
+      <p class="f-note">Opens WhatsApp with your details. We respond within 4 hours. No spam, ever.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FLOATING WHATSAPP -->
+<a class="wa-float" href="https://wa.me/918779772436?text=Hi%20OOrbit%20Estate%2C%20I%27d%20like%20to%20know%20more." target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm0 1.67c2.2 0 4.27.86 5.82 2.41a8.19 8.19 0 012.42 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.4-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.16 8.16 0 01-1.26-4.37c0-4.54 3.7-8.24 8.24-8.24zm4.52 10.32c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.47-.02-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+</a>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <p class="f-brand"><em>O</em>Orbit Estate</p>
+      <p class="f-tagline">Navi Mumbai's Trusted Property Advisory.<br>Your side. Always.</p>
+      <div class="f-contact">
+        <a href="https://wa.me/918779772436" target="_blank">+91 87797 72436 — WhatsApp</a>
+        <a href="mailto:hello@oorbitestate.com">hello@oorbitestate.com</a>
+        <a href="https://oorbitestate.com">oorbitestate.com</a>
+      </div>
+    </div>
+    <div>
+      <p class="f-col-title">Explore</p>
+      <ul class="f-links">
+        <li><a href="#why">About</a></li>
+        <li><a href="#who">Advisory</a></li>
+        <li><a href="#props">Properties</a></li>
+        <li><a href="#tools">Services</a></li>
+        <li><a href="#consult">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Services</p>
+      <ul class="f-links">
+        <li><a href="#tools">Builder DNA Report</a></li>
+        <li><a href="#tools">True Cost Revealer</a></li>
+        <li><a href="#tools">Agreement Review</a></li>
+        <li><a href="#emi">EMI Calculator</a></li>
+        <li><a href="#consult">Book consultation</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="f-col-title">Stay informed</p>
+      <p style="font-size:0.78rem;color:rgba(252,251,248,0.4);margin-bottom:1rem;line-height:1.6">Market insights for Navi Mumbai buyers — one honest note, occasionally.</p>
+      <div class="f-newsletter">
+        <input type="email" placeholder="Your email" id="nlEmail">
+        <button onclick="subscribeNL()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+  <p class="f-bottom">OOrbit Estate operates as a channel partner for listed developer projects. All projects independently verified on MahaRERA before recommendation. Returns figures quoted for commercial projects are as per developer's official schemes — terms and conditions apply. OOrbit Estate does not guarantee developer returns. This website is for informational purposes only and does not constitute financial or investment advice. · oorbitestate.com · Navi Mumbai, Maharashtra, India.</p>
+</footer>
+
+<script>
+// LOADER
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('done')},600)});
+
+// NAV toggle
+var navToggle=document.getElementById('navToggle'),navMenu=document.getElementById('navMenu');
+if(navToggle){navToggle.addEventListener('click',function(){navMenu.classList.toggle('open')})}
+document.querySelectorAll('#navMenu a').forEach(function(a){a.addEventListener('click',function(){navMenu.classList.remove('open')})});
+
+// Hide nav on scroll down
+var lastScroll=0,nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){
+  var s=window.pageYOffset;
+  if(s>lastScroll&&s>200){nav.style.transform='translateY(-100%)'}else{nav.style.transform='translateY(0)'}
+  lastScroll=s;
+});
+
+// HERO rotator
+(function(){
+  var lines=[
+    "Buy your dream home from <em>trusted builders</em> across Navi Mumbai.",
+    "Only RERA-verified builders.<br>Only homes <em>worth your trust.</em>",
+    "Buy with clarity. Buy with confidence.<br><em>Buy with us.</em>",
+    "Own a piece of Navi Mumbai —<br><em>before the world catches on.</em>",
+    "The right home, the right price,<br><em>the right guidance.</em>"
+  ];
+  var idx=0,el=document.getElementById('rotator-text');
+  if(el){
+    function show(){el.innerHTML=lines[idx];void el.offsetWidth;el.classList.add('show')}
+    function cycle(){el.classList.remove('show');setTimeout(function(){idx=(idx+1)%lines.length;show()},650)}
+    show();setInterval(cycle,4000);
+  }
+})();
+
+// INTRO rotator
+(function(){
+  var lines=[
+    "You shouldn't have to<br>face this alone.<br><em>Now you won't.</em>",
+    "Knowledge is power.<br>We put it <em>in your hands.</em>",
+    "The right advice,<br>at the moment<br><em>you need it most.</em>",
+    "One honest advisor,<br>working only <em>for you.</em>"
+  ];
+  var idx=0,el=document.getElementById('intro-rotator');
+  if(el){
+    function show(){el.innerHTML=lines[idx];void el.offsetWidth;el.classList.add('show')}
+    function cycle(){el.classList.remove('show');setTimeout(function(){idx=(idx+1)%lines.length;show()},650)}
+    show();setInterval(cycle,4400);
+  }
+})();
+
+// Name from URL
+(function(){
+  try{
+    var p=new URLSearchParams(window.location.search);
+    var n=p.get('name')||p.get('n');
+    if(n&&n.length>0&&n.length<40){
+      var el=document.getElementById('hero-name');
+      if(el){var c=n.charAt(0).toUpperCase()+n.slice(1).toLowerCase();el.textContent='A personal message for '+c}
+    }
+  }catch(e){}
+})();
+
+// Tab switch
+function showTab(id,btn){
+  document.querySelectorAll('.prop-panel').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('.props-tab').forEach(function(t){t.classList.remove('active')});
+  var panel=document.getElementById(id);if(panel)panel.classList.add('active');
+  if(btn)btn.classList.add('active');
+  setTimeout(animateScores,100);
+}
+
+// Scroll reveal + counters + scores
+var revealObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');revealObserver.unobserve(e.target)}})
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(function(el){revealObserver.observe(el)});
+
+// Counters
+var counted=false;
+var counterObserver=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting&&!counted){
+      counted=true;
+      document.querySelectorAll('.counter-num').forEach(function(el){
+        var target=parseInt(el.getAttribute('data-target')),suffix=el.getAttribute('data-suffix')||'',cur=0,step=target/60;
+        var t=setInterval(function(){cur+=step;if(cur>=target){cur=target;clearInterval(t)}el.textContent=Math.floor(cur)+suffix},22);
+      });
+    }
+  })
+},{threshold:0.3});
+var cg=document.querySelector('.counters-grid');if(cg)counterObserver.observe(cg);
+
+// Investment score bars
+function animateScores(){document.querySelectorAll('.prop-panel.active .prop-score-fill').forEach(function(el){el.style.width=el.getAttribute('data-score')+'%'})}
+var scoreObserver=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){animateScores()}})},{threshold:0.2});
+var pp=document.querySelector('.props');if(pp)scoreObserver.observe(pp);
+
+// EMI calculator
+function fmt(n){return '₹'+Math.round(n).toLocaleString('en-IN')}
+function calcEMI(){
+  var P=parseFloat(document.getElementById('amt').value);
+  var r=parseFloat(document.getElementById('rate').value)/12/100;
+  var n=parseFloat(document.getElementById('ten').value)*12;
+  var emi=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+  var total=emi*n,interest=total-P;
+  document.getElementById('amtVal').textContent=fmt(P);
+  document.getElementById('rateVal').textContent=document.getElementById('rate').value+'%';
+  document.getElementById('tenVal').textContent=document.getElementById('ten').value+' years';
+  document.getElementById('emiResult').textContent=fmt(emi);
+  document.getElementById('emiPrincipal').textContent=fmt(P);
+  document.getElementById('emiInterest').textContent=fmt(interest);
+  document.getElementById('emiTotal').textContent=fmt(total);
+}
+['amt','rate','ten'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',calcEMI)});
+calcEMI();
+
+// Form
+function submitForm(e){
+  e.preventDefault();
+  var n=document.getElementById('fn').value.trim(),ph=document.getElementById('fp').value.trim();
+  var t=document.getElementById('ft').value,b=document.getElementById('fb').value||'Not specified',pt=document.getElementById('fpt').value||'Any time';
+  var msg='Hi OOrbit Estate,\n\nI am '+n+' ('+ph+').\n\nInterest: '+t+'\nBudget: '+b+'\nPreferred time: '+pt+'\n\nPlease book me a private consultation.\n\nThank you.';
+  window.open('https://wa.me/918779772436?text='+encodeURIComponent(msg),'_blank');
+}
+
+// Newsletter
+function subscribeNL(){
+  var em=document.getElementById('nlEmail').value.trim();
+  if(em&&em.indexOf('@')>0){window.open('https://wa.me/918779772436?text='+encodeURIComponent('Hi OOrbit, please add me to your market insights: '+em),'_blank');document.getElementById('nlEmail').value=''}
+  else{alert('Please enter a valid email.')}
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var h=this.getAttribute('href');if(h==='#')return;
+    var t=document.querySelector(h);if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+
+// SUITE TABS
+function suiteTab(id,btn){
+  document.querySelectorAll('.suite-panel').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('.suite-tab').forEach(function(t){t.classList.remove('active')});
+  var panel=document.getElementById(id);if(panel)panel.classList.add('active');
+  if(btn)btn.classList.add('active');
+}
+function fmtL(n){
+  if(n>=10000000)return '₹'+(n/10000000).toFixed(2)+' Cr';
+  if(n>=100000)return '₹'+(n/100000).toFixed(0)+' L';
+  return '₹'+Math.round(n).toLocaleString('en-IN');
+}
+function fmtFull(n){return '₹'+Math.round(n).toLocaleString('en-IN')}
+
+// BUDGET PLANNER
+function calcBudget(){
+  var inc=+document.getElementById('bpInc').value;
+  var emi=+document.getElementById('bpEmi').value;
+  var dp=+document.getElementById('bpDp').value;
+  var safeEmi=Math.max(0,inc*0.4-emi);
+  var r=8.5/12/100,n=240;
+  var loan=safeEmi*(Math.pow(1+r,n)-1)/(r*Math.pow(1+r,n));
+  var total=loan+dp;
+  document.getElementById('bpIncVal').textContent=fmtFull(inc);
+  document.getElementById('bpEmiVal').textContent=fmtFull(emi);
+  document.getElementById('bpDpVal').textContent=fmtFull(dp);
+  document.getElementById('bpResult').textContent=fmtL(total);
+  document.getElementById('bpSafeEmi').textContent=fmtFull(safeEmi);
+  document.getElementById('bpLoan').textContent=fmtL(loan);
+  document.getElementById('bpDp2').textContent=fmtL(dp);
+  var match='';
+  if(total<4500000)match='Areas that fit: Taloja, Ulwe (compact)';
+  else if(total<7000000)match='Areas that fit: Ulwe, Taloja, Panvel';
+  else if(total<11000000)match='Areas that fit: Panvel, Kharghar';
+  else match='Areas that fit: Kharghar, Nerul, Belapur';
+  document.getElementById('bpMatch').textContent=match;
+}
+['bpInc','bpEmi','bpDp'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',calcBudget)});
+if(document.getElementById('bpInc'))calcBudget();
+
+// ROI
+function calcROI(){
+  var price=+document.getElementById('roiPrice').value;
+  var app=+document.getElementById('roiApp').value/100;
+  var rent=+document.getElementById('roiRent').value;
+  var yr=+document.getElementById('roiYr').value;
+  var future=price*Math.pow(1+app,yr);
+  var apprec=future-price;
+  var rentTotal=rent*12*yr;
+  var totalVal=future+rentTotal;
+  var gain=apprec+rentTotal;
+  var pct=Math.round(gain/price*100);
+  document.getElementById('roiPriceVal').textContent=fmtFull(price);
+  document.getElementById('roiAppVal').textContent=document.getElementById('roiApp').value+'%';
+  document.getElementById('roiRentVal').textContent=fmtFull(rent);
+  document.getElementById('roiYrVal').textContent=yr+' year'+(yr>1?'s':'');
+  document.getElementById('roiResult').textContent=fmtL(totalVal);
+  document.getElementById('roiApprec').textContent=fmtL(apprec);
+  document.getElementById('roiRentTotal').textContent=fmtL(rentTotal);
+  document.getElementById('roiGain').textContent=fmtL(gain);
+  document.getElementById('roiPct').textContent='+'+pct+'%';
+}
+['roiPrice','roiApp','roiRent','roiYr'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',calcROI)});
+if(document.getElementById('roiPrice'))calcROI();
+
+// BUILDER CHECK
+function builderCheck(){
+  var v=document.getElementById('builderInput').value.trim();
+  if(!v){alert('Please enter a builder or project name.');return}
+  var msg='Hi OOrbit Estate,\n\nPlease send me the Builder DNA Report for: '+v+'\n\nI want to check their MahaRERA track record before deciding. Thank you.';
+  window.open('https://wa.me/918779772436?text='+encodeURIComponent(msg),'_blank');
+}
+
+</script>
 </body>
 </html>

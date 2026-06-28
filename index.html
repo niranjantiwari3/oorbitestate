@@ -122,13 +122,10 @@ nav{
   height:100vh;min-height:620px;position:relative;overflow:hidden;
   display:flex;align-items:flex-end;padding:0 5% 9vh;
 }
-.hero-img{
-  position:absolute;inset:0;
-  background-image:url('images/atal-setu.jpg');
-  background-size:cover;background-position:center;
-  animation:heroZoom 20s ease-out forwards;
-}
-@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.12)}}
+.hero-slideshow{position:absolute;inset:0;overflow:hidden}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 2s ease-in-out}
+.hero-slide.active{opacity:1;animation:heroZoom 8s ease-out forwards}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.1)}}
 .hero-overlay{
   position:absolute;inset:0;
   background:linear-gradient(to top,rgba(20,24,22,0.92) 0%,rgba(20,24,22,0.45) 45%,rgba(20,24,22,0.1) 100%);
@@ -195,7 +192,7 @@ nav{
 .reveal-d3{transition-delay:0.3s}
 @media(prefers-reduced-motion:reduce){
   .reveal{opacity:1;transform:none;transition:none}
-  .hero-img{animation:none}
+  .hero-slide.active{animation:none}
   *{animation-duration:0.01ms!important}
 }
 
@@ -543,7 +540,18 @@ footer{background:#161616;padding:4.5rem 5% 3rem;color:rgba(252,251,248,0.5)}
 
 <!-- HERO -->
 <section class="hero" id="top" style="padding-top:0">
-  <div class="hero-img"></div>
+  <div class="hero-slideshow" id="heroSlideshow">
+    <div class="hero-slide active" style="background-image:url('images/atal-setu.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/palm-beach-road.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/cbd-belapur.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/navi-mumbai-airport.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/kharghar-golf.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/seawoods-grand-central.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/central-park-kharghar.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/iskcon-temple.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/jewel-navi-mumbai.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/nerul-uran-railway.jpg')"></div>
+  </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-label">Navi Mumbai · Property Advisory</p>
@@ -1146,6 +1154,19 @@ footer{background:#161616;padding:4.5rem 5% 3rem;color:rgba(252,251,248,0.5)}
 <script>
 // LOADER
 window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('done')},600)});
+
+// HERO SLIDESHOW
+(function(){
+  var slides=document.querySelectorAll('.hero-slide');
+  if(slides.length>1){
+    var cur=0;
+    setInterval(function(){
+      slides[cur].classList.remove('active');
+      cur=(cur+1)%slides.length;
+      slides[cur].classList.add('active');
+    },5000);
+  }
+})();
 
 // NAV toggle
 var navToggle=document.getElementById('navToggle'),navMenu=document.getElementById('navMenu');
